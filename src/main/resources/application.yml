@@ -1,0 +1,19 @@
+# whole config we can comment still it will work with default configs
+spring:
+  cloud:
+    function:
+      definition: consumerBinding;processorBinding;producerBinding
+    stream:
+      bindings:
+        producerBinding-out-0:
+          destination: processor-topic
+        processorBinding-in-0:
+          destination: processor-topic
+        processorBinding-out-0:
+          destination: consumer-topic
+        consumerBinding-in-0:
+          destination: consumer-topic
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
